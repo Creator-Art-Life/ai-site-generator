@@ -22,7 +22,7 @@ function Provider({ children }: { children: React.ReactNode }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const convex = useConvex();
 
-  const SIDEBAR_WIDTH = 256; // Для w-64 (16rem = 256px)
+  const SIDEBAR_WIDTH = 304; // Для w-64 (16rem = 256px)
 
   useEffect(() => {
     IsAutheicated();

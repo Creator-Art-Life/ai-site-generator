@@ -6,9 +6,13 @@ export async function POST(req: Request) {
 
   try {
     const result = await GenAiCode.sendMessage(prompt);
-    const resp = result.response.text();
+    const resp = await result.response.text(); // Дождаться ответа
     return NextResponse.json(JSON.parse(resp));
-  } catch (error) {
-    return NextResponse.json({ error: error });
+  } catch (error: any) {
+    console.error("Error in API:", error);
+    return NextResponse.json(
+      { error: error.message || "Unknown error" },
+      { status: 500 }
+    );
   }
 }
