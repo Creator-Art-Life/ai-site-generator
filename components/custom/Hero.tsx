@@ -11,7 +11,6 @@ import { MessagesContext } from "@/context/MessagesContext";
 import SignInDialog from "./SignInDialog";
 import { UserDetailContext } from "@/context/UserDetailContext";
 import { useMutation } from "convex/react";
-import { api } from "../../../convex/_generated/api";
 import { useRouter } from "next/navigation";
 
 function Hero() {
@@ -108,6 +107,7 @@ function Hero() {
 }
 
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { api } from "@/convex/_generated/api";
 
 function AlertDemo() {
   return (

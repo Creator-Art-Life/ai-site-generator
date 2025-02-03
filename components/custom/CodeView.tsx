@@ -15,11 +15,11 @@ import axios from "axios";
 import { MessagesContext } from "@/context/MessagesContext";
 import Prompt from "@/data/Prompt";
 import { useConvex, useMutation } from "convex/react";
-import { api } from "../../../convex/_generated/api";
 import { useParams } from "next/navigation";
 import { Loader2Icon } from "lucide-react";
 import SandpackPreviewClient from "./SandpackPreviewClient";
 import { ActionContext } from "@/context/ActionsContext";
+import { api } from "@/convex/_generated/api";
 
 function CodeView() {
   const { id } = useParams();

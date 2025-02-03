@@ -1,5 +1,5 @@
+import { chatSession } from "@/configs/AiModel";
 import { NextResponse } from "next/server";
-import { chatSession } from "../../../../configs/AiModel";
 
 export async function POST(req: Request) {
   const { promt } = await req.json();

@@ -13,8 +13,8 @@ import axios from "axios";
 import { useGoogleLogin } from "@react-oauth/google";
 import { UserDetailContext } from "@/context/UserDetailContext";
 import { useMutation } from "convex/react";
-import { api } from "../../../convex/_generated/api";
 import { v4 as uuid } from "uuid";
+import { api } from "@/convex/_generated/api";
 
 function SignInDialog({
   openDialog,

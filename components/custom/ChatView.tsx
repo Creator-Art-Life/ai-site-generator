@@ -3,7 +3,6 @@
 import { useConvex, useMutation } from "convex/react";
 import { useParams } from "next/navigation";
 import React, { useContext, useEffect, useState } from "react";
-import { api } from "../../../convex/_generated/api";
 import { MessagesContext } from "@/context/MessagesContext";
 import Colors from "@/data/Colors";
 import { UserDetailContext } from "@/context/UserDetailContext";
@@ -16,6 +15,7 @@ import axios from "axios";
 import Prompt from "@/data/Prompt";
 import ReactMarkdown from "react-markdown";
 import { useSidebar } from "../ui/sidebar";
+import { api } from "@/convex/_generated/api";
 
 function ChatView() {
   const { id } = useParams();

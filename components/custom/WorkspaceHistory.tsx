@@ -1,7 +1,6 @@
 import { UserDetailContext } from "@/context/UserDetailContext";
 import { useConvex, useMutation } from "convex/react";
 import React, { useContext, useEffect, useState } from "react";
-import { api } from "../../../convex/_generated/api";
 import { truncateContent } from "@/lib/utils";
 import Link from "next/link";
 import { useSidebar } from "../ui/sidebar";
@@ -20,6 +19,7 @@ import {
 } from "@/components/ui/dialog";
 import { Separator } from "../ui/separator";
 import toast from "react-hot-toast";
+import { api } from "@/convex/_generated/api";
 
 function WorkspaceHistory() {
   const { userDetail } = useContext(UserDetailContext);

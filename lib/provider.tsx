@@ -7,12 +7,12 @@ import { MessagesContext } from "@/context/MessagesContext";
 import { UserDetailContext } from "@/context/UserDetailContext";
 import React, { useEffect, useState } from "react";
 import { useConvex } from "convex/react";
-import { api } from "../../convex/_generated/api";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import AppSideBar from "@/components/custom/AppSideBar";
 import { SidebarHandler } from "./sidebar-handler";
 import { Toaster } from "react-hot-toast";
 import { ActionContext } from "@/context/ActionsContext";
+import { api } from "@/convex/_generated/api";
 
 function Provider({ children }: { children: React.ReactNode }) {
   const [messages, setMessages] = useState<any[]>([]);
