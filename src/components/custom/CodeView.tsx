@@ -32,6 +32,7 @@ function CodeView() {
   const { action, setAction } = useContext(ActionContext);
 
   useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     id && GetFiles();
   }, [id]);
 
@@ -42,6 +43,7 @@ function CodeView() {
   const GetFiles = async () => {
     setLoading(true);
     const result = await convex.query(api.workspace.GetWorkspace, {
+      //@ts-expect-error text for resolve type err
       workspaceId: id,
     });
     const mergedFiles = { ...Lookup.DEFAULT_FILE, ...result?.fileData };
