@@ -1,0 +1,13 @@
+.fade-text {
+  position: relative;
+  display: inline-block;
+  /* color: #878787; */
+  background: linear-gradient(to right, #878787, rgba(135, 135, 135, 0.3));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: color 0.2s ease-in-out;
+}
+
+.fade-text:hover {
+  -webkit-text-fill-color: #d0d0d0;
+}

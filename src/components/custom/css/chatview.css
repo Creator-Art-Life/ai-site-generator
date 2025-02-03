@@ -1,0 +1,8 @@
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Убирает ползунок в Chrome, Safari */
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none; /* Убирает ползунок в IE и Edge */
+  scrollbar-width: none; /* Убирает ползунок в Firefox */
+}
