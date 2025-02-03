@@ -19,7 +19,7 @@ function Provider({ children }: { children: React.ReactNode }) {
   const [userDetail, setUserDetail] = useState<any | null>(null);
   const [action, setAction] = useState(null);
 
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const convex = useConvex();
 
   const SIDEBAR_WIDTH = 256; // Для w-64 (16rem = 256px)

@@ -107,7 +107,7 @@ function Header() {
 
 function ButtonGit() {
   return (
-    <Link href={"https://github.com/Creator-Art-Life"}>
+    <Link href={"https://github.com/Creator-Art-Life/ai-site-generator"}>
       <button className="btn-github">
         <svg
           width="16"

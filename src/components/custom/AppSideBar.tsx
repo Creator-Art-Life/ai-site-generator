@@ -15,7 +15,10 @@ import Link from "next/link";
 import SideBarFooter from "./SideBarFooter";
 import { Separator } from "../ui/separator";
 import { UserDetailContext } from "@/context/UserDetailContext";
+// 19262f
+// 299aec
 
+// bghover: 1b3345
 function AppSideBar() {
   const logo = useImageLogo();
   return (
@@ -29,11 +32,14 @@ function AppSideBar() {
         <Link className="pointer-cursor" href={"/"}>
           <Image src={logo} alt="logo" width={50} height={50} />
         </Link>
-        <Button className="mt-5">
-          <MessageCircleCode /> Start New Chat
-        </Button>
+        <div className="flex items-start">
+          <Button className="mt-5 w-full flex items-center justify-start bg-[#19262f] hover:bg-[#1b3345]">
+            <MessageCircleCode color="#299aec" />
+            <p className="text-[#299aec]">Start New Chat</p>
+          </Button>
+        </div>
       </SidebarHeader>
-      <SidebarContent className="p-5">
+      <SidebarContent className="pl-5">
         <SidebarGroup>
           <WorkspaceHistory />
         </SidebarGroup>

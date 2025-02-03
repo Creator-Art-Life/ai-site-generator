@@ -43,24 +43,6 @@ function WorkspaceHistory() {
     setLoading(false);
   };
 
-  // Функция группировки рабочих пространств по времени создания
-  const groupWorkspaces = (workspaces: Workspace[]) => {
-    const now = Date.now();
-    const oneDay = 24 * 60 * 60 * 1000;
-    const oneMonth = 30 * oneDay;
-
-    return {
-      today: workspaces.filter((ws) => now - ws._creationTime < oneDay),
-      last30Days: workspaces.filter(
-        (ws) =>
-          now - ws._creationTime >= oneDay && now - ws._creationTime < oneMonth
-      ),
-      older: workspaces.filter((ws) => now - ws._creationTime >= oneMonth),
-    };
-  };
-
-  const { today, last30Days, older } = groupWorkspaces(workspaceList);
-
   return (
     <div className="pt-4">
       <h2 className="text-lg font-semibold mb-4">Your Chats</h2>
@@ -72,10 +54,10 @@ function WorkspaceHistory() {
           ))}
         </div>
       )}
-      {today.length > 0 && (
+      {workspaceList ? (
         <div>
           <h3 className="text-sm text-gray-300 mb-2 font-medium">Today</h3>
-          {today.map((workspace) => (
+          {workspaceList.map((workspace: Workspace) => (
             <WorkspaceItem
               key={workspace._id}
               workspace={workspace}
@@ -83,29 +65,9 @@ function WorkspaceHistory() {
             />
           ))}
         </div>
-      )}
-      {last30Days.length > 0 && (
-        <div className="mt-4">
-          <h3 className="text-sm text-gray-300 mb-2">Last 30 Days</h3>
-          {last30Days.map((workspace) => (
-            <WorkspaceItem
-              key={workspace._id}
-              workspace={workspace}
-              toggleSidebar={toggleSidebar}
-            />
-          ))}
-        </div>
-      )}
-      {older.length > 0 && (
-        <div className="mt-4">
-          <h3 className="text-sm text-gray-300 mb-2">December 2024</h3>
-          {older.map((workspace: Workspace) => (
-            <WorkspaceItem
-              key={workspace._id}
-              workspace={workspace}
-              toggleSidebar={toggleSidebar}
-            />
-          ))}
+      ) : (
+        <div className="flex items-center justify-center h-full">
+          <p className="text-gray-500 text-2xl font-bold">No chats yet</p>
         </div>
       )}
     </div>
