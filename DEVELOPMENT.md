@@ -103,7 +103,7 @@ Now, let’s set up Vercel to deploy your project.
 npx convex deploy --cmd 'npm run build'
 ```
 
-3.Istal command if there is an error during deployment:
+3. Istall command if there is an error during deployment:
 
 ```bash
 npm install --legacy-peer-deps
