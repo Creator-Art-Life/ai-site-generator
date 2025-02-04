@@ -18,6 +18,8 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { User } from "@/lib/types";
+import Image from "next/image";
 
 const SIDEBAR_COOKIE_NAME = "sidebar:state";
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7;
@@ -285,6 +287,62 @@ const SidebarTrigger = React.forwardRef<
   );
 });
 SidebarTrigger.displayName = "SidebarTrigger";
+
+const SidebarTriggerCustom = React.forwardRef<
+  React.ElementRef<"div">, // Меняем тип рефа на div
+  React.ComponentProps<"div"> & { userDetail?: User } // Добавляем пропс userDetail
+>(({ className, userDetail, onClick, ...props }, ref) => {
+  const { toggleSidebar } = useSidebar();
+
+  return (
+    <div
+      ref={ref}
+      className={cn("flex items-center gap-2 cursor-pointer", className)}
+      {...props}
+    >
+      {/* Блок с аватаркой пользователя */}
+      <div className="flex flex-col items-center gap-2">
+        <div
+          onClick={(event) => {
+            onClick?.(event);
+            toggleSidebar();
+          }}
+          className="flex items-center gap-2"
+        >
+          {userDetail?.name ? (
+            <Image
+              src={userDetail.picture}
+              alt="user"
+              width={40}
+              height={40}
+              className="bg-blue-500 rounded-full object-cover w-10 h-10"
+            />
+          ) : (
+            <div className="w-10 h-10 bg-blue-500 flex items-center justify-center rounded-full text-white font-bold text-lg">
+              {"U"}
+            </div>
+          )}
+        </div>
+
+        <Button
+          data-sidebar="trigger"
+          variant="link"
+          size="sm"
+          onClick={(event) => {
+            //@ts-expect-error some type err
+            onClick?.(event);
+            toggleSidebar();
+          }}
+          className=" px-2 flex justify-center"
+        >
+          <PanelLeft className="w-10 h-10 mr-2" />
+        </Button>
+      </div>
+    </div>
+  );
+});
+
+SidebarTriggerCustom.displayName = "SidebarTriggerCustom";
 
 const SidebarRail = React.forwardRef<
   HTMLButtonElement,
@@ -761,4 +819,5 @@ export {
   SidebarSeparator,
   SidebarTrigger,
   useSidebar,
+  SidebarTriggerCustom,
 };

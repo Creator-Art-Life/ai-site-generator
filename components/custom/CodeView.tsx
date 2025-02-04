@@ -32,7 +32,6 @@ function CodeView() {
   const { action, setAction } = useContext(ActionContext);
 
   useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     id && GetFiles();
   }, [id]);
 

@@ -5,6 +5,7 @@ import {
   SidebarFooter,
   SidebarGroup,
   SidebarHeader,
+  SidebarTrigger,
 } from "@/components/ui/sidebar";
 import Image from "next/image";
 import { useImageLogo } from "@/lib/utils";
@@ -29,9 +30,12 @@ function AppSideBar() {
       }}
     >
       <SidebarHeader className="pl-5">
-        <Link className="pointer-cursor" href={"/"}>
-          <Image src={logo} alt="logo" width={50} height={50} />
-        </Link>
+        <div className="flex justify-between">
+          <Link className="pointer-cursor" href={"/"}>
+            <Image src={logo} alt="logo" width={50} height={50} />
+          </Link>
+          <SidebarTrigger className="mt-3 " />
+        </div>
         <div className="flex items-start">
           <Button className="mt-5 w-full flex items-center justify-start bg-[#19262f] hover:bg-[#1b3345]">
             <MessageCircleCode color="#299aec" />

@@ -12,6 +12,7 @@ import SignInDialog from "./SignInDialog";
 import { UserDetailContext } from "@/context/UserDetailContext";
 import { useMutation } from "convex/react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 function Hero() {
   const [userInput, setUserInput] = useState("");
@@ -21,6 +22,7 @@ function Hero() {
   const CreateWorkspace = useMutation(api.workspace.CreateWorkspace);
 
   const router = useRouter();
+  console.log("userDetail", userDetail);
 
   const onGenerate = async (input: string) => {
     console.log("userDetail", userDetail);
@@ -102,18 +104,36 @@ function Hero() {
         closeDialog={(v) => setOpenDialog(v)}
         openDialog={openDialog}
       />
+      <div className="fixed bottom-0 left-0 p-4">
+        <ProfileSideBarBtn userDetail={userDetail} />
+      </div>
+    </div>
+  );
+}
+
+function ProfileSideBarBtn({ userDetail }: { userDetail: User }) {
+  return (
+    <div>
+      <SidebarTriggerCustom userDetail={userDetail} />
     </div>
   );
 }
 
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { api } from "@/convex/_generated/api";
+import { User } from "@/lib/types";
+import { Button } from "../ui/button";
+import {
+  SidebarTrigger,
+  SidebarTriggerCustom,
+  useSidebar,
+} from "../ui/sidebar";
 
 function AlertDemo() {
   return (
-    <Alert className="flex items-center">
+    <Alert className="flex items-center max-sm:w-[300px]">
       <TriangleAlert className="h-4 w-4" />
-      <div>
+      <div className="">
         <AlertTitle>Note!</AlertTitle>
         <AlertDescription>
           Due to high traffic, the app might not work properly. We appreciate

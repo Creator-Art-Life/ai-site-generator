@@ -9,12 +9,9 @@ import { ModeToggle } from "./mode-toggle";
 import Link from "next/link";
 import { UserDetailContext } from "@/context/UserDetailContext";
 import "./css/error.css";
-import { Skeleton } from "../ui/skeleton";
 import { useImageLogo } from "@/lib/utils";
 import "./css/btn-git.css";
-import { useSidebar } from "../ui/sidebar";
 import { ActionContext } from "@/context/ActionsContext";
-import { useRouter } from "next/router";
 
 import { usePathname } from "next/navigation"; // Используем новый навигационный хук
 

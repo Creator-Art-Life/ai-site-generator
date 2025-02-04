@@ -67,6 +67,7 @@ function Provider({ children }: { children: React.ReactNode }) {
                   <AppSideBar />
                   <main className="w-full">
                     {children}
+
                     <Toaster
                       toastOptions={{
                         style: {
