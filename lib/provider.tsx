@@ -1,7 +1,7 @@
 "use client";
 
 import { GoogleOAuthProvider } from "@react-oauth/google";
-import Header from "@/components/custom/Header";
+import { Header } from "@/components/custom/Header";
 import { ThemeProvider } from "@/components/theme-provider";
 import { MessagesContext } from "@/context/MessagesContext";
 import { UserDetailContext } from "@/context/UserDetailContext";

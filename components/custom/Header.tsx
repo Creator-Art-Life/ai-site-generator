@@ -102,7 +102,9 @@ function Header() {
   );
 }
 
-function ButtonGit() {
+Header.displayName = "Header";
+
+const ButtonGit = () => {
   return (
     <Link href={"https://github.com/Creator-Art-Life/ai-site-generator"}>
       <button className="btn-github">
@@ -122,7 +124,9 @@ function ButtonGit() {
       </button>
     </Link>
   );
-}
+};
+
+ButtonGit.displayName = "ButtonGit";
 
 function Error() {
   return (
@@ -194,4 +198,4 @@ function Error() {
   );
 }
 
-export default Header;
+export { Header, ButtonGit };

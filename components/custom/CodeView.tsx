@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import {
   SandpackProvider,
   SandpackLayout,
@@ -20,6 +20,28 @@ import { Loader2Icon } from "lucide-react";
 import SandpackPreviewClient from "./SandpackPreviewClient";
 import { ActionContext } from "@/context/ActionsContext";
 import { api } from "@/convex/_generated/api";
+import {
+  AlertDialog,
+  AlertDialogContent,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { ButtonGit } from "./Header";
+
+import {
+  DropdownMenu,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { DropdownMenuCheckboxItemProps } from "@radix-ui/react-dropdown-menu";
+
+const LocalUse = process.env.NEXT_PUBLIC_PRODUCTION_USE;
 
 function CodeView() {
   const { id } = useParams();
@@ -30,6 +52,9 @@ function CodeView() {
   const convex = useConvex();
   const [loading, setLoading] = useState(false);
   const { action, setAction } = useContext(ActionContext);
+
+  const [isLongRequest, setIsLongRequest] = useState(false);
+  const requestTimer = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     id && GetFiles();
@@ -61,6 +86,14 @@ function CodeView() {
 
   const GenerateAiCode = async () => {
     setLoading(true);
+    setIsLongRequest(false);
+
+    if (requestTimer.current) clearTimeout(requestTimer.current);
+
+    requestTimer.current = setTimeout(() => {
+      setIsLongRequest(true);
+    }, 10000);
+
     const PROMPT = JSON.stringify(messages) + " " + Prompt.CODE_GEN_PROMPT;
     const result = await axios.post("/api/gen-ai-code", {
       prompt: PROMPT,
@@ -76,6 +109,8 @@ function CodeView() {
       workspaceId: id,
       files: aiResp.files,
     });
+
+    if (requestTimer.current) clearTimeout(requestTimer.current);
     setLoading(false);
   };
 
@@ -107,6 +142,7 @@ function CodeView() {
           </h2>
         </div>
       </div> */}
+
       <SandpackProvider
         template="react"
         theme={"dark"}
@@ -133,6 +169,14 @@ function CodeView() {
           )}
         </SandpackLayout>
       </SandpackProvider>
+
+      {isLongRequest && LocalUse == "true" && (
+        <LongOparation
+          isLongRequest={isLongRequest}
+          setIsLongRequest={setIsLongRequest}
+        />
+      )}
+
       {loading && (
         <div className="p-10 bg-gray-900 opacity-80 absolute top-0 rounded-lg w-full h-full flex items-center justify-center">
           <Loader2Icon className="animate-spin h-10 w-10 text-white" />
@@ -176,6 +220,92 @@ const ToggleSwitch = ({
         </h2>
       </div>
     </div>
+  );
+};
+
+const LongOparation = ({
+  setIsLongRequest,
+  isLongRequest,
+}: {
+  setIsLongRequest: React.Dispatch<React.SetStateAction<boolean>>;
+  isLongRequest: boolean;
+}) => {
+  return (
+    <div className="fixed inset-0 bg-gray-900 opacity-80 flex items-center justify-center">
+      <AlertDialog open={isLongRequest}>
+        <AlertDialogContent className="max-sm:w-[40vh] max-sm:rounded-lg">
+          <AlertDialogHeader className="flex items-center relative">
+            <AlertDialogTitle className="flex items-center">
+              <p>Long Operation</p>
+              {/* <ChangeLang /> */}
+            </AlertDialogTitle>
+            <div className="mt-6 text-center text-sm text-gray-300">
+              If you see this message, the hosting service is unable to process
+              such a large request. However, you can run this project locally.
+              Before doing so, please read the README.md file.
+            </div>
+          </AlertDialogHeader>
+          <AlertDialogFooter className="flex items-center justify-center">
+            <Button
+              variant={"destructive"}
+              onClick={() => setIsLongRequest(false)}
+              className="max-sm:mt-2 max-sm:w-[100px]"
+            >
+              Cancel
+            </Button>
+            <Link
+              href={"https://github.com/Creator-Art-Life/ai-site-generator"}
+            >
+              <Button
+                variant="outline"
+                className="px-4 py-2 text-sm font-bold text-white transition-all duration-500 bg-black bg-opacity-40 shadow-md hover:text-blue-400 hover:shadow-lg hover:bg-opacity-50 hover:-translate-y-1 max-sm:w-[200px]"
+              >
+                Project on Github
+              </Button>
+            </Link>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+    </div>
+  );
+};
+
+type Checked = DropdownMenuCheckboxItemProps["checked"];
+
+const ChangeLang = () => {
+  const [showStatusBar, setShowStatusBar] = React.useState<Checked>(true);
+  const [showActivityBar, setShowActivityBar] = React.useState<Checked>(false);
+  const [showPanel, setShowPanel] = React.useState<Checked>(false);
+
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline">Open</Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="w-56">
+        <DropdownMenuLabel>Select Lang</DropdownMenuLabel>
+        <DropdownMenuSeparator />
+        <DropdownMenuCheckboxItem
+          checked={showStatusBar}
+          onCheckedChange={setShowStatusBar}
+        >
+          Status Bar
+        </DropdownMenuCheckboxItem>
+        <DropdownMenuCheckboxItem
+          checked={showActivityBar}
+          onCheckedChange={setShowActivityBar}
+          disabled
+        >
+          Activity Bar
+        </DropdownMenuCheckboxItem>
+        <DropdownMenuCheckboxItem
+          checked={showPanel}
+          onCheckedChange={setShowPanel}
+        >
+          Panel
+        </DropdownMenuCheckboxItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 };
 
