@@ -254,7 +254,9 @@ const LongOparation = ({
               Cancel
             </Button>
             <Link
-              href={"https://github.com/Creator-Art-Life/ai-site-generator"}
+              href={
+                "https://github.com/Creator-Art-Life/ai-site-generator/blob/master/DEVELOPMENT.md"
+              }
             >
               <Button
                 variant="outline"

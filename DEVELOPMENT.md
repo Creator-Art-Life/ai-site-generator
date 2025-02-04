@@ -1,10 +1,10 @@
-#AI generated this instruction
+# AI generated this instruction
 
 Sure! Here’s a detailed step-by-step instruction for setting up and deploying a project with Convex and other necessary configurations to Vercel. It will also cover how to configure `.env` variables and set up the environment.
 
 ---
 
-# Setup and Deployment Guide for Convex Project
+# Setup and Deployment Guide for AI Site Generator Project
 
 This guide will walk you through the steps to set up a project using Convex, configure environment variables, and deploy it to Vercel. The guide assumes the project is already created, and you are now focusing on configurations and deployment.
 
@@ -24,8 +24,8 @@ Before we begin, make sure you have the following:
 If you haven't already cloned your project, do so by running the following command:
 
 ```bash
-git clone <your-repository-url>
-cd <your-project-folder>
+git clone https://github.com/Creator-Art-Life/ai-site-generator.git
+cd ai-site-generator
 ```
 
 ### 2. Install Dependencies
@@ -97,9 +97,21 @@ Now, let’s set up Vercel to deploy your project.
 #### 6.2 Set Environment Variables in Vercel
 
 1. After connecting the project, go to the **Vercel Dashboard**.
-2. Select your project and go to the **Settings** tab.
-3. Scroll down to **Environment Variables**.
-4. Add the following environment variables (use the same keys as in `.env.local`):
+2. Set build command:
+
+```bash
+npx convex deploy --cmd 'npm run build'
+```
+
+3.Istal command if there is an error during deployment:
+
+```bash
+npm install --legacy-peer-deps
+```
+
+4. Select your project and go to the **Settings** tab.
+5. Scroll down to **Environment Variables**.
+6. Add the following environment variables (use the same keys as in `.env.local`):
 
    - `NEXT_PUBLIC_GOOGLE_CLIENT_AUTH_ID`
    - `CONVEX_DEPLOYMENT`
