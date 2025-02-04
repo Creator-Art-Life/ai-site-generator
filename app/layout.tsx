@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
-import Header from "@/components/custom/Header";
+import { Header } from "@/components/custom/Header";
 import { MessagesContext } from "@/context/MessagesContext";
 import Provider from "@/lib/provider";
 import { ConvexClientProvider } from "./ConvexClientProvider";
