@@ -95,40 +95,45 @@ This project uses the following dependencies:
 
 <details>
   <summary>Click to expand dependencies</summary>
-```json
-"dependencies": {
-    "@codesandbox/sandpack-react": "^2.19.11",
-    "@google/generative-ai": "^0.21.0",
-    "@radix-ui/react-alert-dialog": "^1.1.5",
-    "@radix-ui/react-dialog": "^1.1.5",
-    "@radix-ui/react-dropdown-menu": "^2.1.5",
-    "@radix-ui/react-separator": "^1.1.1",
-    "@radix-ui/react-slot": "^1.1.1",
-    "@radix-ui/react-tooltip": "^1.1.7",
-    "@react-oauth/google": "^0.12.1",
-    "axios": "^1.7.9",
-    "class-variance-authority": "^0.7.1",
-    "clsx": "^2.1.1",
-    "convex": "^1.18.2",
-    "date-fns": "^4.1.0",
-    "dedent": "^1.5.3",
-    "framer-motion": "^12.0.6",
-    "lodash": "^4.17.21",
-    "lucide-react": "^0.474.0",
-    "next": "15.1.6",
-    "next-themes": "^0.4.4",
-    "postprocessing": "^6.36.6",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "react-hot-toast": "^2.5.1",
-    "react-markdown": "^9.0.3",
-    "tailwind-merge": "^3.0.1",
-    "tailwind-scrollbar-hide": "^2.0.0",
-    "tailwindcss-animate": "^1.0.7",
-    "three": "^0.173.0",
-    "uuid": "^11.0.5"
-}
-```
+  <pre>
+    <code>
+      {
+        "dependencies": {
+          "@codesandbox/sandpack-react": "^2.19.11",
+          "@google/generative-ai": "^0.21.0",
+          "@radix-ui/react-alert-dialog": "^1.1.5",
+          "@radix-ui/react-dialog": "^1.1.5",
+          "@radix-ui/react-dropdown-menu": "^2.1.5",
+          "@radix-ui/react-separator": "^1.1.1",
+          "@radix-ui/react-slot": "^1.1.1",
+          "@radix-ui/react-tooltip": "^1.1.7",
+          "@react-oauth/google": "^0.12.1",
+          "axios": "^1.7.9",
+          "class-variance-authority": "^0.7.1",
+          "clsx": "^2.1.1",
+          "convex": "^1.18.2",
+          "date-fns": "^4.1.0",
+          "dedent": "^1.5.3",
+          "framer-motion": "^12.0.6",
+          "lodash": "^4.17.21",
+          "lucide-react": "^0.474.0",
+          "next": "15.1.6",
+          "next-themes": "^0.4.4",
+          "postprocessing": "^6.36.6",
+          "react": "^19.0.0",
+          "react-dom": "^19.0.0",
+          "react-hot-toast": "^2.5.1",
+          "react-markdown": "^9.0.3",
+          "tailwind-merge": "^3.0.1",
+          "tailwind-scrollbar-hide": "^2.0.0",
+          "tailwindcss-animate": "^1.0.7",
+          "three": "^0.173.0",
+          "uuid": "^11.0.5"
+        }
+      }
+    </code>
+  </pre>
+</details>
 
 ## Contribution
 
