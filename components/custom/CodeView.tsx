@@ -170,12 +170,12 @@ function CodeView() {
         </SandpackLayout>
       </SandpackProvider>
 
-      {/* {isLongRequest && (
+      {isLongRequest && (
         <LongOparation
           isLongRequest={isLongRequest}
           setIsLongRequest={setIsLongRequest}
         />
-      )} */}
+      )}
 
       {loading && (
         <div className="p-10 bg-gray-900 opacity-80 absolute top-0 rounded-lg w-full h-full flex items-center justify-center">
